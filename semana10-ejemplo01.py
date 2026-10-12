@@ -3,7 +3,7 @@ from eii_utils import leer_entero
 x: int = 0
 y: int = 0
 plastico1: str = "4123-5555-6666-7777"
-plastico2: str = "4123-5555-6666-"
+plastico2: str = "4123-5555-6666-x"
 plastico3: str = "4123-5555-6666-777a"
 plastico4: str = "4123555566667777"
 plastico5: str = "5123555566667777"
@@ -30,9 +30,12 @@ def contar_digitos(texto: str) -> int:
 
 def es_numero_valido(plastico: str) -> bool:
     salida: bool = False
+    contador:int = 0
     plastico = plastico.strip()
     if plastico[0] == "4" and (len(plastico) == 16 or len(plastico) == 19):
-        salida = True
+        contador = contar_digitos(plastico)
+        if contador == 16:
+            salida = True
     return salida
 
 
