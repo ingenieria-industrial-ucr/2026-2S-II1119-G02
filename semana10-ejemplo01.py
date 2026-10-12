@@ -8,11 +8,8 @@ plastico3: str = "4123-5555-6666-777a"
 plastico4: str = "4123555566667777"
 plastico5: str = "5123555566667777"
 
-
-def contar_digitos(texto: str) -> int:
-    contador: int = 0
-    for caracter in texto:
-        if (
+def es_un_digito(caracter:str) -> bool:
+    return (
             caracter == "1"
             or caracter == "2"
             or caracter == "3"
@@ -23,7 +20,12 @@ def contar_digitos(texto: str) -> int:
             or caracter == "8"
             or caracter == "9"
             or caracter == "0"
-        ):
+        )
+
+def contar_digitos(texto: str) -> int:
+    contador: int = 0
+    for caracter in texto:
+        if es_un_digito(caracter):
             contador += 1
     return contador
 
