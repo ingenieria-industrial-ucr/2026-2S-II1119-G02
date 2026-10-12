@@ -9,6 +9,7 @@ plastico4: str = "4123555566667777"
 plastico5: str = "5123555566667777"
 
 
+
 def funcion_angel(numeros:list[int], digitos:int) -> list[int]:
     salida:list[int] = []
     for i in numeros:
@@ -38,6 +39,13 @@ def contar_digitos(texto: str) -> int:
             contador += 1
     return contador
 
+def validar_bloque_numerico(texto:str, inicio:int, fin:int) -> bool:
+    es_valido:bool = False
+    bloque = texto[inicio:fin]
+    es_valido = contar_digitos(bloque) == 4
+    return es_valido
+
+
 
 def es_numero_valido(plastico: str) -> bool:
     salida: bool = False
@@ -45,8 +53,10 @@ def es_numero_valido(plastico: str) -> bool:
     plastico = plastico.strip()
     if plastico[0] == "4" and (len(plastico) == 16 or len(plastico) == 19):
         contador = contar_digitos(plastico)
-        if contador == 16:
+        if contador == 16 and len(plastico):
             salida = True
+        else:
+            salida = validar_bloque_numerico(plastico, 0,4) and validar_bloque_numerico(plastico, 5,9) and validar_bloque_numerico(plastico, 10,14) and validar_bloque_numerico(plastico, 15,19)
     return salida
 
 
