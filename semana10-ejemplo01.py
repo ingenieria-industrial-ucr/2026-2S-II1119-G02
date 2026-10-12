@@ -8,6 +8,15 @@ plastico3: str = "4123-5555-6666-777a"
 plastico4: str = "4123555566667777"
 plastico5: str = "5123555566667777"
 
+
+def funcion_angel(numeros:list[int], digitos:int) -> list[int]:
+    salida:list[int] = []
+    for i in numeros:
+        if len(str(i)) == digitos:
+            salida.append(i)
+
+    return salida
+
 def es_un_digito(caracter:str) -> bool:
     return (
             caracter == "1"
@@ -56,3 +65,4 @@ if __name__ == "__main__":
     print(plastico3, es_numero_valido(plastico3))
     print(plastico4, es_numero_valido(plastico4))
     print(plastico5, es_numero_valido(plastico5))
+    print(funcion_angel([10, 34, 45, 67, 78, 89, 898, 887],3))
